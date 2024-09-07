@@ -10,7 +10,7 @@ def my_reward_function(state, action, next_state):
 
 # create the environment and task together with the reward function
 env = gym.make("LocoMujoco", env_name="UnitreeH1.run.real", reward_type="custom",
-               reward_params=dict(reward_callback=my_reward_function))
+               reward_params=dict(reward_callback=my_reward_function),render_mode="human")
 
 action_dim = env.action_space.shape[0]
 
@@ -25,6 +25,8 @@ while True:
         i = 0
     action = np.random.randn(action_dim)
     nstate, reward, terminated, truncated, info = env.step(action)
+
+    print()
 
     # HERE is your favorite RL algorithm
 
